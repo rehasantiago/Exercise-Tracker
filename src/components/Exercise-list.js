@@ -38,17 +38,17 @@ class ExerciseList extends Component{
     }
 
     deleteExercise(id){
-        axios.delete('http://localhost:5000/exercises'+id)
+        axios.delete('http://localhost:5000/exercises/'+id)
             .then(res => console.log(res.data))
 
-        this.state({
+        this.setState({
             exercises:this.state.exercises.filter(el => el._id !== id)//_id is the id in the database ie its named as _id
         })
     }
 
     exerciseList(){
         return this.state.exercises.map(currentExercise => {
-            return <Exercise excercise={currentExercise} deleteExercise={this.deleteExercise} key={currentExercise._id} />
+            return <Exercise exercise={currentExercise} deleteExercise={this.deleteExercise} key={currentExercise._id} />
         })
     }
 
